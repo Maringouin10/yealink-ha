@@ -62,24 +62,37 @@ class YealinkClient:
         password: str | None = None,
     ) -> None:
         self._session = session
-        self.host = host
         self._username = username
         self._password = password
-        self._base = f"http://{host}"
+        host = host.strip().rstrip("/")
+        schemes = ["https", "http"]
+        if "://" in host:
+            scheme, host = host.split("://", 1)
+            schemes = [scheme.lower()] + [x for x in schemes if x != scheme.lower()]
+        self.host = host.split("/")[0]
+        self._schemes = schemes
+        self._base = f"{schemes[0]}://{self.host}"
 
     async def async_ping(self) -> bool:
-        """Return True if the phone's web server answers at all."""
-        try:
-            async with self._session.get(self._base, timeout=TIMEOUT) as resp:
-                return resp.status < 500
-        except (aiohttp.ClientError, TimeoutError):
-            return False
+        """Return True if the phone's web server answers (HTTPS or HTTP)."""
+        for scheme in self._schemes:
+            base = f"{scheme}://{self.host}"
+            try:
+                async with self._session.get(
+                    base, timeout=TIMEOUT, ssl=False
+                ) as resp:
+                    if resp.status < 500:
+                        self._base = base
+                        return True
+            except (aiohttp.ClientError, TimeoutError, OSError):
+                continue
+        return False
 
     async def async_action_uri(self, query: str) -> bool:
         """Call /servlet?<query>; the phone must trust this host (Action URI)."""
         try:
             async with self._session.get(
-                f"{self._base}/servlet?{query}", timeout=TIMEOUT
+                f"{self._base}/servlet?{query}", timeout=TIMEOUT, ssl=False
             ) as resp:
                 if resp.status >= 400:
                     _LOGGER.warning(
@@ -114,10 +127,11 @@ class YealinkClient:
                 f"{self._base}/servlet?m=mod_listener&p=login&q=login",
                 data={"username": self._username, "pwd": self._password or ""},
                 timeout=TIMEOUT,
+                ssl=False,
             ):
                 pass
             async with self._session.get(
-                f"{self._base}/servlet?m=mod_data&p=status&q=load", timeout=TIMEOUT
+                f"{self._base}/servlet?m=mod_data&p=status&q=load", timeout=TIMEOUT, ssl=False
             ) as resp:
                 if resp.status != 200:
                     return {}

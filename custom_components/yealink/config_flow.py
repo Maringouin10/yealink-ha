@@ -32,9 +32,11 @@ class YealinkConfigFlow(ConfigFlow, domain=DOMAIN):
     ) -> ConfigFlowResult:
         errors: dict[str, str] = {}
         if user_input is not None:
-            host = user_input[CONF_HOST].strip()
+            client = YealinkClient(
+                async_get_clientsession(self.hass), user_input[CONF_HOST]
+            )
+            host = client.host
             self._async_abort_entries_match({CONF_HOST: host})
-            client = YealinkClient(async_get_clientsession(self.hass), host)
             if await client.async_ping():
                 await self.async_set_unique_id(host)
                 self._abort_if_unique_id_configured()
