@@ -1,0 +1,255 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Yealink IP Phone",
+        "description": "Saisissez l'adresse IP du téléphone. Le mot de passe et la lecture du statut sont optionnels et expérimentaux.",
+        "data": {
+          "host": "Adresse IP",
+          "name": "Nom",
+          "username": "Utilisateur web",
+          "password": "Mot de passe web",
+          "poll_status": "Lire le statut web (expérimental)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Téléphone injoignable"
+    },
+    "abort": {
+      "already_configured": "Déjà configuré"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "call_state": {
+        "name": "État de l'appel",
+        "state": {
+          "idle": "Au repos",
+          "ringing": "Sonnerie",
+          "dialing": "Numérotation",
+          "talking": "En conversation",
+          "on_hold": "En attente"
+        }
+      },
+      "registration": {
+        "name": "Enregistrement SIP",
+        "state": {
+          "registered": "Enregistré",
+          "unregistered": "Non enregistré",
+          "failed": "Échec"
+        }
+      },
+      "direction": {
+        "name": "Sens de l'appel"
+      },
+      "remote_number": {
+        "name": "Numéro distant actuel"
+      },
+      "remote_name": {
+        "name": "Nom distant actuel"
+      },
+      "local_number": {
+        "name": "Numéro local"
+      },
+      "call_id": {
+        "name": "ID d'appel"
+      },
+      "call_started": {
+        "name": "Début de l'appel"
+      },
+      "last_incoming_number": {
+        "name": "Dernier numéro entrant"
+      },
+      "last_incoming_name": {
+        "name": "Dernier nom entrant"
+      },
+      "last_outgoing_number": {
+        "name": "Dernier numéro sortant"
+      },
+      "last_missed_number": {
+        "name": "Dernier numéro manqué"
+      },
+      "last_call_number": {
+        "name": "Numéro du dernier appel"
+      },
+      "last_call_direction": {
+        "name": "Sens du dernier appel"
+      },
+      "last_call_duration": {
+        "name": "Durée du dernier appel"
+      },
+      "last_call_time": {
+        "name": "Heure du dernier appel"
+      },
+      "incoming_today": {
+        "name": "Appels entrants aujourd'hui"
+      },
+      "outgoing_today": {
+        "name": "Appels sortants aujourd'hui"
+      },
+      "missed_today": {
+        "name": "Appels manqués aujourd'hui"
+      },
+      "incoming_total": {
+        "name": "Appels entrants total"
+      },
+      "outgoing_total": {
+        "name": "Appels sortants total"
+      },
+      "answered_total": {
+        "name": "Appels décrochés total"
+      },
+      "missed_total": {
+        "name": "Appels manqués total"
+      },
+      "talk_seconds_today": {
+        "name": "Temps de conversation aujourd'hui"
+      },
+      "total_talk_seconds": {
+        "name": "Temps de conversation total"
+      },
+      "active_user": {
+        "name": "Compte actif"
+      },
+      "active_host": {
+        "name": "Serveur actif"
+      },
+      "last_event": {
+        "name": "Dernier événement"
+      },
+      "last_event_time": {
+        "name": "Heure du dernier événement"
+      },
+      "last_boot": {
+        "name": "Dernier démarrage"
+      },
+      "last_ip_change": {
+        "name": "Dernier changement d'IP"
+      },
+      "last_seen": {
+        "name": "Dernière activité"
+      },
+      "ip": {
+        "name": "Adresse IP"
+      },
+      "mac": {
+        "name": "Adresse MAC"
+      },
+      "model": {
+        "name": "Modèle"
+      },
+      "firmware": {
+        "name": "Firmware"
+      },
+      "hardware": {
+        "name": "Version matérielle"
+      },
+      "uptime": {
+        "name": "Durée de fonctionnement"
+      },
+      "webhook": {
+        "name": "Action URL (webhook)"
+      }
+    },
+    "binary_sensor": {
+      "online": {
+        "name": "En ligne"
+      },
+      "registered": {
+        "name": "Enregistré"
+      },
+      "ringing": {
+        "name": "Sonnerie"
+      },
+      "in_call": {
+        "name": "En communication"
+      },
+      "hook_off": {
+        "name": "Décroché"
+      },
+      "muted": {
+        "name": "Micro coupé"
+      },
+      "on_hold": {
+        "name": "En attente"
+      },
+      "dnd": {
+        "name": "Ne pas déranger"
+      },
+      "forward_always": {
+        "name": "Renvoi inconditionnel"
+      },
+      "forward_busy": {
+        "name": "Renvoi si occupé"
+      },
+      "forward_no_answer": {
+        "name": "Renvoi sans réponse"
+      }
+    },
+    "button": {
+      "btn_answer": {
+        "name": "Décrocher / OK"
+      },
+      "btn_hangup": {
+        "name": "Raccrocher / Annuler"
+      },
+      "btn_speaker": {
+        "name": "Haut-parleur"
+      },
+      "btn_headset": {
+        "name": "Casque"
+      },
+      "btn_mute": {
+        "name": "Muet"
+      },
+      "btn_hold": {
+        "name": "Mise en attente"
+      },
+      "btn_transfer": {
+        "name": "Transfert"
+      },
+      "btn_conference": {
+        "name": "Conférence"
+      },
+      "btn_volume_up": {
+        "name": "Volume +"
+      },
+      "btn_volume_down": {
+        "name": "Volume -"
+      },
+      "btn_redial": {
+        "name": "Bis"
+      },
+      "btn_reboot": {
+        "name": "Redémarrer"
+      }
+    },
+    "switch": {
+      "dnd_switch": {
+        "name": "Ne pas déranger"
+      }
+    },
+    "event": {
+      "phone_event": {
+        "name": "Événement téléphone"
+      }
+    }
+  },
+  "services": {
+    "dial": {
+      "name": "Composer",
+      "description": "Compose un numéro sur le téléphone.",
+      "fields": {
+        "device_id": {
+          "name": "Téléphone",
+          "description": "Téléphone cible"
+        },
+        "number": {
+          "name": "Numéro",
+          "description": "Numéro à composer"
+        }
+      }
+    }
+  }
+}

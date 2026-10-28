@@ -1,0 +1,255 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Yealink IP Phone",
+        "description": "Enter the phone IP address. Password/status polling are optional and experimental.",
+        "data": {
+          "host": "IP address",
+          "name": "Name",
+          "username": "Web username",
+          "password": "Web password",
+          "poll_status": "Poll web status (experimental)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot reach the phone"
+    },
+    "abort": {
+      "already_configured": "Already configured"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "call_state": {
+        "name": "Call state",
+        "state": {
+          "idle": "Idle",
+          "ringing": "Ringing",
+          "dialing": "Dialing",
+          "talking": "Talking",
+          "on_hold": "On hold"
+        }
+      },
+      "registration": {
+        "name": "SIP registration",
+        "state": {
+          "registered": "Registered",
+          "unregistered": "Unregistered",
+          "failed": "Failed"
+        }
+      },
+      "direction": {
+        "name": "Call direction"
+      },
+      "remote_number": {
+        "name": "Current remote number"
+      },
+      "remote_name": {
+        "name": "Current remote name"
+      },
+      "local_number": {
+        "name": "Local number"
+      },
+      "call_id": {
+        "name": "Call ID"
+      },
+      "call_started": {
+        "name": "Call started"
+      },
+      "last_incoming_number": {
+        "name": "Last incoming number"
+      },
+      "last_incoming_name": {
+        "name": "Last incoming name"
+      },
+      "last_outgoing_number": {
+        "name": "Last outgoing number"
+      },
+      "last_missed_number": {
+        "name": "Last missed number"
+      },
+      "last_call_number": {
+        "name": "Last call number"
+      },
+      "last_call_direction": {
+        "name": "Last call direction"
+      },
+      "last_call_duration": {
+        "name": "Last call duration"
+      },
+      "last_call_time": {
+        "name": "Last call time"
+      },
+      "incoming_today": {
+        "name": "Incoming calls today"
+      },
+      "outgoing_today": {
+        "name": "Outgoing calls today"
+      },
+      "missed_today": {
+        "name": "Missed calls today"
+      },
+      "incoming_total": {
+        "name": "Incoming calls total"
+      },
+      "outgoing_total": {
+        "name": "Outgoing calls total"
+      },
+      "answered_total": {
+        "name": "Answered calls total"
+      },
+      "missed_total": {
+        "name": "Missed calls total"
+      },
+      "talk_seconds_today": {
+        "name": "Talk time today"
+      },
+      "total_talk_seconds": {
+        "name": "Talk time total"
+      },
+      "active_user": {
+        "name": "Active account"
+      },
+      "active_host": {
+        "name": "Active server"
+      },
+      "last_event": {
+        "name": "Last event"
+      },
+      "last_event_time": {
+        "name": "Last event time"
+      },
+      "last_boot": {
+        "name": "Last boot"
+      },
+      "last_ip_change": {
+        "name": "Last IP change"
+      },
+      "last_seen": {
+        "name": "Last seen"
+      },
+      "ip": {
+        "name": "IP address"
+      },
+      "mac": {
+        "name": "MAC address"
+      },
+      "model": {
+        "name": "Model"
+      },
+      "firmware": {
+        "name": "Firmware"
+      },
+      "hardware": {
+        "name": "Hardware version"
+      },
+      "uptime": {
+        "name": "Uptime"
+      },
+      "webhook": {
+        "name": "Action URL (webhook)"
+      }
+    },
+    "binary_sensor": {
+      "online": {
+        "name": "Online"
+      },
+      "registered": {
+        "name": "Registered"
+      },
+      "ringing": {
+        "name": "Ringing"
+      },
+      "in_call": {
+        "name": "In call"
+      },
+      "hook_off": {
+        "name": "Off hook"
+      },
+      "muted": {
+        "name": "Muted"
+      },
+      "on_hold": {
+        "name": "On hold"
+      },
+      "dnd": {
+        "name": "Do not disturb"
+      },
+      "forward_always": {
+        "name": "Forward always"
+      },
+      "forward_busy": {
+        "name": "Forward on busy"
+      },
+      "forward_no_answer": {
+        "name": "Forward no answer"
+      }
+    },
+    "button": {
+      "btn_answer": {
+        "name": "Answer / OK"
+      },
+      "btn_hangup": {
+        "name": "Hang up / Cancel"
+      },
+      "btn_speaker": {
+        "name": "Speaker"
+      },
+      "btn_headset": {
+        "name": "Headset"
+      },
+      "btn_mute": {
+        "name": "Mute"
+      },
+      "btn_hold": {
+        "name": "Hold"
+      },
+      "btn_transfer": {
+        "name": "Transfer"
+      },
+      "btn_conference": {
+        "name": "Conference"
+      },
+      "btn_volume_up": {
+        "name": "Volume up"
+      },
+      "btn_volume_down": {
+        "name": "Volume down"
+      },
+      "btn_redial": {
+        "name": "Redial"
+      },
+      "btn_reboot": {
+        "name": "Reboot"
+      }
+    },
+    "switch": {
+      "dnd_switch": {
+        "name": "Do not disturb"
+      }
+    },
+    "event": {
+      "phone_event": {
+        "name": "Phone event"
+      }
+    }
+  },
+  "services": {
+    "dial": {
+      "name": "Dial",
+      "description": "Dial a number on the phone.",
+      "fields": {
+        "device_id": {
+          "name": "Phone",
+          "description": "Target phone"
+        },
+        "number": {
+          "name": "Number",
+          "description": "Number to dial"
+        }
+      }
+    }
+  }
+}

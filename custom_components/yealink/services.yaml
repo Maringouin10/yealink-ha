@@ -1,0 +1,12 @@
+dial:
+  fields:
+    device_id:
+      required: true
+      selector:
+        device:
+          integration: yealink
+    number:
+      required: true
+      example: "0612345678"
+      selector:
+        text:
