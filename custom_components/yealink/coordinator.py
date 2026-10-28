@@ -39,7 +39,7 @@ class YealinkCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         self.state = PhoneState()
         self.last_seen = None
         self._store: Store = Store(hass, STORAGE_VERSION, f"{DOMAIN}.{entry_id}")
-        self._listeners: list = []
+        self._event_listeners: list = []
 
     async def async_load(self) -> None:
         data = await self._store.async_load()
@@ -51,8 +51,8 @@ class YealinkCoordinator(DataUpdateCoordinator[dict[str, Any]]):
 
     @callback
     def async_add_event_listener(self, cb) -> Any:
-        self._listeners.append(cb)
-        return lambda: self._listeners.remove(cb)
+        self._event_listeners.append(cb)
+        return lambda: self._event_listeners.remove(cb)
 
     @callback
     def async_handle_event(self, params: dict[str, Any]) -> None:
@@ -64,7 +64,7 @@ class YealinkCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         data = dict(self.data or {})
         data["online"] = True
         self.async_set_updated_data(data)
-        for cb in list(self._listeners):
+        for cb in list(self._event_listeners):
             cb(self.state.last_event, params)
 
     async def _async_update_data(self) -> dict[str, Any]:
